@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ELO Test</title>
+</head>
+<style>
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.slideshow {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.slideshow img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: auto;
+	width: 100%;
+	opacity: 0;
+	z-index: 0;
+	transition: opacity .5s ease-in-out;
+}
+
+.current {
+	opacity: 1 !important;
+	visibility: visible;
+	z-index: 1;
+	transition: opacity .5s ease-in-out;
+}
+</style>
+<body>
+<div class="slideshow">
+	<img src="./img/Shift_Wall_00.jpg" class="current"/>
+	<img src="./img/Shift_Wall_01.jpg" />
+	<img src="./img/Shift_Wall_02a.jpg" />
+	<img src="./img/Shift_Wall_02b.jpg" />
+	<img src="./img/Shift_Wall_03.jpg" />
+	<img src="./img/Shift_Wall_04.jpg" />
+	<img src="./img/Shift_Wall_05.jpg" />
+</div>
+
+<script src="js/jquery.3.1.1.min.js"></script>
+<script type="text/javascript">
+var pages = $('.slideshow').children( 'img' ),
+	pagesCount = pages.length,
+	current = 0;
+function next() {
+	pages.removeClass('current');
+	pages.eq( current ).addClass('current');
+	if( current < pagesCount - 1) {
+		++current;
+	}
+	else {
+		current = 0;
+	}	
+}
+setInterval(function(){
+	next();
+}, 4600);		
+</script>
+</body>
+</html>
